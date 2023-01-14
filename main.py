@@ -1,23 +1,31 @@
 from pytube import YouTube
 
 while True:
-    command = input("Video Link > ")
+    command = input("'help' > ")
 
-    try:
-        video = YouTube(command)
+    if command.lower() == "download" or command.lower() == "dl":
+        video_link = input("Video Link > ")
 
-        print(f"Downloading: {video.title}")
+        try:
+            video = YouTube(video_link)
 
-        downloaded_video = video.streams.get_highest_resolution()
+            print(f"Downloading: {video.title}")
 
-        downloaded_video.download("videos")
+            downloaded_video = video.streams.get_highest_resolution()
 
-        print("Successful")
-    except:
-        pass
+            downloaded_video.download("videos")
+
+            print("Successful")
+        except:
+            print("Unknown Link")
+
+    if command.lower() == "help":
+        print('''"download" to download a video.
+"help" pulls up the help menu.
+"quit" to exit the program.''')
 
     if command.lower() == "quit":
         break
 
 
-print("Done")
+print("Quit")
