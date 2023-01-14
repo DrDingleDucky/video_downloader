@@ -16,7 +16,6 @@ while True:
     except:
         pass
 
-
     if command.lower() == "quit":
         break
 
