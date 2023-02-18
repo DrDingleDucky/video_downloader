@@ -1,4 +1,4 @@
-# Video-Downloader
+# Video Downloader
 
 Download YouTube videos.
 
