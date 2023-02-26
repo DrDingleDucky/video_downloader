@@ -1,30 +1,19 @@
-from pytube import YouTube
+import pytube
 
-while True:
-    command = input("> ")
+video_link = input("video link -> ")
 
-    if command.lower() == "download" or command.lower() == "dl":
-        video_link = input("Video Link > ")
+try:
+    video = pytube.YouTube(video_link)
 
-        try:
-            video = YouTube(video_link)
+    print(f"downloading: {video.title}")
 
-            print(f"Downloading: {video.title}")
+    downloaded_video = video.streams.get_highest_resolution()
 
-            downloaded_video = video.streams.get_highest_resolution()
+    downloaded_video.download("videos")
 
-            downloaded_video.download("videos")
+    print("successful")
 
-            print("Successful")
-        except:
-            print("Error")
+except:
+    print("error")
 
-    if command.lower() == "help":
-        print('''"download" to download a video.
-"help" pulls up the help menu.
-"quit" to exit the program.''')
-
-    if command.lower() == "quit":
-        break
-
-print("Done")
+print("done")
